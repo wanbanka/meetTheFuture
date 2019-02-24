@@ -1,0 +1,20 @@
+
+<p>
+  <strong>Titre:</strong>
+  <%= @futur.titre %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @futur.description %>
+</p>
+
+<p>
+    <strong>Décision:</strong>
+    <%@futur.decision.each do |decision| %>
+    <%= decision.titre %>
+    <% end %>
+</p>
+
+<%= link_to 'Modifier', edit_futur_path(@futur) %> |
+<%= link_to 'Retour', futurs_path %>

@@ -1,0 +1,45 @@
+
+
+<h1>Thèmes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Description</th>
+      <th>Texte de départ</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @themes.each do |theme| %>
+      <tr>
+        <td><%= theme.nom %></td>
+        <td><%= texteCourt(theme.description) %></td>
+        <td><%= texteCourt(theme.texte_depart) %></td>
+        <td>
+        <% if can? :read, @theme %>
+        <%= link_to 'Afficher', theme %>
+        <% end %>
+        </td>
+        <td>
+        <% if can? :update, @theme %>
+        <%= link_to 'Modifier', edit_theme_path(theme) %>
+        <% end %>
+        </td>
+        <td>
+        <% if can? :destroy, @theme %>
+        <%= link_to 'Supprimer', theme, method: :delete, data: { confirm: 'Êtes-vous sûr(e) de supprimer ce thème ?' } %>
+        <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<% if can? :create, @theme %>
+<%= link_to 'Créer un thème', new_theme_path %>
+<% end %>

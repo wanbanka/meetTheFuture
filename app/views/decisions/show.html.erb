@@ -1,0 +1,31 @@
+
+
+<p>
+  <strong>Titre:</strong>
+  <%= @decision.titre %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @decision.description %>
+</p>
+
+<p>
+  <strong>Theme:</strong>
+  <%= @decision.theme.nom %>
+</p>
+
+<p>
+    <strong>Futur lié:</strong>
+    <% @decision.futur.each do |futur| %>
+    <%= futur.titre %>
+    <% end %>
+</p>
+
+<p>
+    <strong>Première décision:</strong>
+    <%= booleanToText(@decision.first_decision) %>
+</p>
+
+<%= link_to 'Modifier', edit_decision_path(@decision) %> |
+<%= link_to 'Retour', decisions_path %>

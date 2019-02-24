@@ -1,0 +1,8 @@
+<h1><%= @theme.nom %></h1>
+<p><%= @theme.texte_depart %></p>
+
+<% @decisions.each do |decision| %>
+<h1><%= decision.titre %></h1>
+<% end %>
+
+<%= link_to 'Retour', :back %>

@@ -1,0 +1,18 @@
+<p>
+  <strong>Nom:</strong>
+  <%= @theme.nom %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @theme.description %>
+</p>
+
+<p>
+    <p>
+    <strong>Texte de départ:</strong>
+    <%= @theme.texte_depart %>
+</p>
+
+<%= link_to 'Modifier', edit_theme_path(@theme) %> |
+<%= link_to 'Retour', themes_path %>

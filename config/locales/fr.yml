@@ -1,0 +1,29 @@
+fr:
+    hello: "Bonjour tout le monde"
+    activerecord:
+        errors:
+            models:
+                decision:
+                    attributes:
+                        titre:
+                            blank: 'Champ requis'
+                        description:
+                            blank: 'Champ requis'
+                        theme:
+                            required: 'Champ requis'
+                theme:
+                    attributes:
+                        nom:
+                            blank: 'Champ requis'
+                        description:
+                            blank: 'Champ requis'
+                        texte_depart:
+                            blank: 'Champ requis'
+                futur:
+                    attributes:
+                        titre:
+                            blank: 'Champ requis'
+                        description:
+                            blank: 'Champ requis'
+                        decision:
+                            blank: 'Champ requis'

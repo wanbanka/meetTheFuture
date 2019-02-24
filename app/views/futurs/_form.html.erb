@@ -1,0 +1,18 @@
+<%= simple_form_for @futur do |f| %>
+
+  <div class="field">
+    <%= f.input :titre, label: 'Titre' %>
+  </div>
+
+  <div class="field">
+    <%= f.input :description, label: 'Description', input_html: {cols: '50', rows: '10'} %>
+  </div>
+  
+  <div class="field">
+      <%= f.association :decision, label_method: :titre, label: 'Décision associée', as: :select, input_html: {multiple: false} %>
+  </div>
+
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
