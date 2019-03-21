@@ -9,10 +9,14 @@
 </p>
 
 <p>
-    <p>
-    <strong>Texte de départ:</strong>
-    <%= @theme.texte_depart %>
+    <strong>Futur de départ:</strong>
+    <%= @theme.futur.titre %>
 </p>
 
-<%= link_to 'Modifier', edit_theme_path(@theme) %> |
-<%= link_to 'Retour', themes_path %>
+<p>
+    <strong>Description du futur de départ:</strong>
+    <%= @theme.futur.description %>
+</p>
+
+<%= link_to 'Modifier', edit_theme_path(@theme), class: 'btn' %> |
+<%= link_to 'Retour', themes_path, class: 'btn' %>

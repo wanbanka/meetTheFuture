@@ -1,33 +1,32 @@
 <h2>Inscription</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
   
-  <div class="field">
+  <div class="form-group">
       <%= f.input :nom, label: 'Nom', input_html: {autofocus: true} %>
   </div>
   
-  <div class="field">
+  <div class="form-group">
       <%= f.input :prenom, label: 'Prénom' %>
   </div>
   
-  <div class="field">
+  <div class="form-group">
       <%= f.input :pseudo, label: 'Pseudo' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
    <%= f.input :email, label: 'Adresse mail', as: :email, input_html: {autocomplete: "email"} %>
   </div>
 
-  <div class="field">
-   <%= f.input :password, label: 'Mot de passe', input_html: {autocomplete: "new-password"} %>
+  <div class="form-group">
+   <%= f.input :password, label: 'Mot de passe', input_html: {autocomplete: "new-password"}, required: true %>
   </div>
 
-  <div class="field">
-    <%= f.input :password_confirmation, label: 'Confirmation de mot de passe', input_html: {autocomplete: "new-password"} %>
+  <div class="form-group">
+    <%= f.input :password_confirmation, label: 'Confirmation de mot de passe', input_html: {autocomplete: "new-password"}, required: true %>
   </div>
 
-  <div class="actions">
+  <div class="form-group">
     <%= f.button :submit, "S'inscrire" %>
   </div>
 <% end %>

@@ -2,13 +2,15 @@
 
 <h1>Thèmes</h1>
 
-<table>
+<%= will_paginate @futurs, renderer: @renderer %>
+
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Nom</th>
       <th>Description</th>
-      <th>Texte de départ</th>
-      <th colspan="3"></th>
+      <th>Premier futur</th>
+      <th colspan="3">Options</th>
     </tr>
   </thead>
 
@@ -17,20 +19,20 @@
       <tr>
         <td><%= theme.nom %></td>
         <td><%= texteCourt(theme.description) %></td>
-        <td><%= texteCourt(theme.texte_depart) %></td>
+        <td><%= texteCourt(theme.futur.titre) %></td>
         <td>
         <% if can? :read, @theme %>
-        <%= link_to 'Afficher', theme %>
+        <%= link_to 'Afficher', theme, class: 'btn btn-primary' %>
         <% end %>
         </td>
         <td>
         <% if can? :update, @theme %>
-        <%= link_to 'Modifier', edit_theme_path(theme) %>
+        <%= link_to 'Modifier', edit_theme_path(theme), class: 'btn' %>
         <% end %>
         </td>
         <td>
         <% if can? :destroy, @theme %>
-        <%= link_to 'Supprimer', theme, method: :delete, data: { confirm: 'Êtes-vous sûr(e) de supprimer ce thème ?' } %>
+        <%= link_to 'Supprimer', theme, class: 'btn btn-error', method: :delete, data: { confirm: 'Êtes-vous sûr(e) de supprimer ce thème ?' } %>
         <% end %>
         </td>
       </tr>
@@ -41,5 +43,8 @@
 <br>
 
 <% if can? :create, @theme %>
-<%= link_to 'Créer un thème', new_theme_path %>
+<%= link_to 'Créer un thème', new_theme_path, class: 'btn btn-success' %>
 <% end %>
+
+
+<%= link_to 'Retour au jeu', root_path, class: 'btn' %>

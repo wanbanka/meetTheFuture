@@ -1,0 +1,9 @@
+<h1>Résultats de votre futur</h1>
+
+<% @foo.each do |id| %>
+
+<% @future = Futur.find(id) %>
+
+<p><%= @future.description %></p>
+
+<% end %>

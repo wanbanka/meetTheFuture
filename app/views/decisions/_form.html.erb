@@ -1,26 +1,31 @@
 <%= simple_form_for @decision do |f| %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.input :titre, label: 'Titre de la décision' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.input :description, label: 'Description de la décision', input_html: {cols: '50', rows: '10'} %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.association :theme, label_method: :nom, label: 'Thème', as: :select %>
   </div>
   
-  <div class="field">
+  <div class="form-group">
       <%= f.association :futur, label_method: :titre, label: 'Futur lié', as: :select, input_html: {multiple: false, required: true} %>
   </div>
   
-  <div class="field">
+  <div class="form-group">
+     <label for="decision_second_futur">Futur suivant</label>
+      <%= select :decision, :second_futur, Futur.all.collect {|futur| [futur.titre, futur.titre]}%>
+  </div>
+  
+  <div class="form-group">
       <%= f.input :first_decision, label: 'Première décision' %>
   </div>
 
-  <div class="actions">
+  <div class="form-group">
     <%= f.button :submit %>
   </div>
 <% end %>

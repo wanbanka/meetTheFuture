@@ -1,13 +1,14 @@
 
 <h1>Futurs</h1>
 
-<table>
+<%= will_paginate @futurs, renderer: @renderer %>
+
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Titre</th>
       <th>Description</th>
-      <th>Décision liée</th>
-      <th colspan="3"></th>
+      <th colspan="3">Options</th>
     </tr>
   </thead>
 
@@ -16,23 +17,19 @@
       <tr>
         <td><%= futur.titre %></td>
         <td><%= texteCourt(futur.description) %></td>
-        <td><% futur.decision.each do |decision| %>
-        <%= decision.titre %>
-        <% end %>
-        </td>
         <td>
         <% if can? :show, @futur %>
-        <%= link_to 'Afficher', futur %>
+        <%= link_to 'Afficher', futur, class: 'btn btn-primary' %>
         <% end %>
         </td>
         <td>
         <% if can? :update, @futur %>
-        <%= link_to 'Modifier', edit_futur_path(futur) %>
+        <%= link_to 'Modifier', edit_futur_path(futur), class: 'btn' %>
         <% end %>
         </td>
         <td>
         <% if can? :destroy, @futur %>
-        <%= link_to 'Supprimer', futur, method: :delete, data: { confirm: 'Êtes-vous sûr(e) de supprimer ce futur ?' } %>
+        <%= link_to 'Supprimer', futur, class: 'btn btn-error', method: :delete, data: { confirm: 'Êtes-vous sûr(e) de supprimer ce futur ?' } %>
         <% end %>
         </td>
       </tr>
@@ -43,5 +40,8 @@
 <br>
 
 <% if can? :create, @futur %>
-<%= link_to 'Créer un futur', new_futur_path %>
+<%= link_to 'Créer un futur', new_futur_path, class: 'btn btn-success' %>
 <% end %>
+
+
+<%= link_to 'Retour au jeu', root_url, class: 'btn' %>

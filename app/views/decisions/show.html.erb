@@ -11,14 +11,26 @@
 </p>
 
 <p>
-  <strong>Theme:</strong>
+  <strong>Thème:</strong>
   <%= @decision.theme.nom %>
 </p>
 
 <p>
     <strong>Futur lié:</strong>
-    <% @decision.futur.each do |futur| %>
-    <%= futur.titre %>
+    <%= @decision.futur.titre %>
+</p>
+
+<p>
+    <strong>Description du futur:</strong>
+    <%= @decision.futur.description %>
+</p>
+
+<p>
+    <strong>Second futur:</strong>
+    <% if @decision.second_futur.length > 0 %>
+    <%= @decision.second_futur %>
+    <% else %>
+    Pas de futur suivant
     <% end %>
 </p>
 
@@ -27,5 +39,5 @@
     <%= booleanToText(@decision.first_decision) %>
 </p>
 
-<%= link_to 'Modifier', edit_decision_path(@decision) %> |
-<%= link_to 'Retour', decisions_path %>
+<%= link_to 'Modifier', edit_decision_path(@decision), class: 'btn' %> |
+<%= link_to 'Retour', decisions_path, class: 'btn' %>

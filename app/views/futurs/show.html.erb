@@ -9,12 +9,7 @@
   <%= @futur.description %>
 </p>
 
-<p>
-    <strong>Décision:</strong>
-    <%@futur.decision.each do |decision| %>
-    <%= decision.titre %>
-    <% end %>
-</p>
 
-<%= link_to 'Modifier', edit_futur_path(@futur) %> |
-<%= link_to 'Retour', futurs_path %>
+<%= link_to 'Modifier', edit_futur_path(@futur), class: 'btn' %> |
+<%= link_to 'Retour', futurs_path, class: 'btn' %> |
+<%= link_to 'Retour aux décisions', decisions_path, class: 'btn' %>

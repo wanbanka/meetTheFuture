@@ -6,7 +6,8 @@ class FutursController < ApplicationController
   # GET /futurs
   # GET /futurs.json
   def index
-    @futurs = Futur.all.includes(:decision)
+    @futurs = Futur.all.includes(:decision).paginate(:page => params[:page], :per_page => 15)
+      @renderer = custom_paginate_renderer
   end
 
   # GET /futurs/1
@@ -27,6 +28,7 @@ class FutursController < ApplicationController
   # POST /futurs.json
   def create
     @futur = Futur.new(futur_params)
+      @futur.titre = @futur.titre.gsub(/"/, '\'')
       
       if @futur.save
          flash[:success] = "Le futur a été sauvegardé."
@@ -66,6 +68,6 @@ class FutursController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def futur_params
-      params.require(:futur).permit(:titre, :description, :decision_ids)
+      params.require(:futur).permit(:titre, :description)
     end
 end

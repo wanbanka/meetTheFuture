@@ -11,20 +11,29 @@
 
   <body>
    
-   <%= link_to 'Décisions', decisions_url %>
-   <%= link_to 'Thèmes', themes_url %>
-   <%= link_to 'Futurs', futurs_url %>
    <section>
        <% if user_signed_in? %>
-        <%= link_to current_user.pseudo, edit_user_registration_url %> - <%= link_to 'Se déconnecter', destroy_user_session_path, data: {confirm: "Voulez-vous vous déconnecter ?"}, method: :delete %>
+       
+       <% if current_user.has_role? :admin %>
+       
+       <%= link_to 'Décisions', decisions_url, class: 'btn btn-primary btn-lg' %>
+   <%= link_to 'Futurs', futurs_url, class: 'btn btn-primary btn-lg' %>
+   <%= link_to 'Thèmes', themes_url, class: 'btn btn-primary btn-lg' %> <br><br>
+      
+      <% end %>
+       
+        <%= link_to current_user.pseudo, edit_user_registration_url, class: 'btn' %> - <%= link_to 'Se déconnecter', destroy_user_session_path, data: {confirm: "Voulez-vous vous déconnecter ?"}, method: :delete, class: 'btn btn-error' %>
+        <% $user = current_user %>
        <% else %>
-       <%= link_to 'Se connecter', new_user_session_url %> - <%= link_to "S'inscrire", new_user_registration_url %>
+       <%= link_to 'Se connecter', new_user_session_url, class: 'btn' %> - <%= link_to "S'inscrire", new_user_registration_url, class: 'btn' %>
        <% end %>
-   </section>
+   </section><br>
    
    <% flash.each do |name, msg| %>
-   <blockquote><%= msg %></blockquote>
-   <% end %> <br><br>
+   <div class="toast toast-<%= name %>">
+       <p><%= msg %></p>
+   </div>
+   <% end %> <br>
    
     <%= yield %>
   </body>

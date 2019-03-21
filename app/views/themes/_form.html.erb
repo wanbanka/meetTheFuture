@@ -1,18 +1,18 @@
 <%= simple_form_for @theme do |f| %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.input :nom, label: 'Nom' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.input :description, label: 'Description', input_html: {cols: '50', rows: '10'} %>
   </div>
   
-  <div class="field">
-      <%= f.input :texte_depart, label: 'Texte de départ', input_html: {cols: '50', rows: '10'} %>
+  <div>
+      <%= f.association :futur, label_method: :titre, label: 'Futur de départ', as: :select %>
   </div>
 
-  <div class="actions">
+  <div class="form-group">
     <%= f.button :submit %>
   </div>
 <% end %>

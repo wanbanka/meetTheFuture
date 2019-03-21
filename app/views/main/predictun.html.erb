@@ -1,0 +1,34 @@
+<% if user_signed_in? %>
+<div class="hero bg-gray">
+   <div class="hero-body">
+       <h1 class="text-uppercase text-center"><%= @theme.nom %></h1>
+   </div>
+</div>
+<h2 class="text-center"><%= @futur.titre %></h2>
+<p><%= @futur.description %></p>
+
+
+
+<% @collect_decisions.each do |decision| %>
+<section class="card">
+   <div class="card-header">
+       <h1><%= decision.titre %></h1>
+    </div>
+    <div class="card-body">
+        <p><%= decision.description %></p>
+    </div>
+<div class="card-footer">
+    <%= link_to 'Voir le futur', controller: "main", action: "predictdeux", id: @tableau_textes[@index], theme: params[:theme] %>
+</div>
+</section>
+<% @index += 1 %>
+<% end %>
+<br>
+<a href="../../choice/<%= params[:theme] %>" class="btn">Retour</a>
+
+<% else %>
+
+<p>Pour pouvoir lancer le jeu: </p>
+<%= link_to 'Se connecter', new_user_session_url, class: 'btn' %> - <%= link_to "S'inscrire", new_user_registration_url, class: 'btn' %> <br>
+
+<% end %>

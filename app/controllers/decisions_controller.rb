@@ -6,7 +6,8 @@ class DecisionsController < ApplicationController
   # GET /decisions
   # GET /decisions.json
   def index
-    @decisions = Decision.all.includes(:user, :futur, :theme)
+    @decisions = Decision.all.includes(:user, :futur, :theme).paginate(:page => params[:page], :per_page => 20)
+      @renderer = custom_paginate_renderer
   end
 
   # GET /decisions/1
@@ -66,6 +67,6 @@ class DecisionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def decision_params
-      params.require(:decision).permit(:titre, :description, :theme_id, :first_decision, :futur_ids)
+      params.require(:decision).permit(:titre, :description, :theme_id, :first_decision, :second_futur, :futur_id)
     end
 end

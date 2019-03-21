@@ -1,6 +1,6 @@
 <h1>Modifier la décision</h1>
 
-<%= render 'form', decision: @decision %>
+<%= render 'form', decision: @decision %> <br><br>
 
-<%= link_to 'Montrer', @decision %> |
-<%= link_to 'Retour', decisions_path %>
+<%= link_to 'Montrer', @decision, class: 'btn btn-success' %> |
+<%= link_to 'Retour', decisions_path, class: 'btn' %>

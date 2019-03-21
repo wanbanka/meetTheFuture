@@ -1,15 +1,19 @@
 
 <h1>Décisions</h1>
 
-<table>
+
+<%= will_paginate @decisions, renderer: @renderer %>
+
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Titre</th>
       <th>Description</th>
-        <th>Theme</th>
+        <th>Thème</th>
         <th>Futur lié</th>
+        <th>Futur suivant</th>
         <th>Première décision</th>
-      <th colspan="3"></th>
+      <th colspan="3">Options</th>
     </tr>
   </thead>
 
@@ -18,25 +22,29 @@
       <tr>
         <td><%= decision.titre %></td>
         <td><%= texteCourt(decision.description) %></td>
-        <td><%= decision.theme.nom %></td>
-        <td><% decision.futur.each do |futur| %>
-        <%= texteCourt(futur.titre) %>
+        <td><%= link_to decision.theme.nom.to_s, decision.theme, class: 'btn' %></td>
+        <td><%= link_to texteCourt(decision.futur.titre), decision.futur, class: 'btn' %></td>
+        <td>
+        <% if decision.second_futur.length > 0 %>
+        <%= texteCourt(decision.second_futur) %>
+        <% else %>
+        Pas de futur suivant
         <% end %>
         </td>
         <td><%= booleanToText(decision.first_decision) %></td>
         <td>
         <% if can? :show, @decision %>
-        <%= link_to 'Afficher', decision %>
+        <%= link_to 'Afficher', decision, class: 'btn btn-primary' %>
         <% end %>
         </td>
         <td>
         <% if can? :update, @decision %>
-        <%= link_to 'Modifier', edit_decision_path(decision) %>
+        <%= link_to 'Modifier', edit_decision_path(decision), class: 'btn' %>
         <% end %>
         </td>
         <td>
         <% if can? :destroy, @decision %>
-        <%= link_to 'Supprimer', decision, method: :delete, data: { confirm: 'Êtes-vous sûr(e) de supprimer cette décision ?' } %>
+        <%= link_to 'Supprimer', decision, class: 'btn btn-error', method: :delete, data: { confirm: 'Êtes-vous sûr(e) de supprimer cette décision ?' } %>
         <% end %>
         </td>
       </tr>
@@ -47,5 +55,8 @@
 <br>
 
 <% if can? :create, @decision %>
-<%= link_to 'Créer une décision', new_decision_path %>
+<%= link_to 'Créer une décision', new_decision_path, class: 'btn btn-success' %>
 <% end %>
+
+
+<%= link_to 'Retour au jeu', root_url, class: 'btn' %>

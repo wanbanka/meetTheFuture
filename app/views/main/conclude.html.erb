@@ -1,0 +1,20 @@
+<% if user_signed_in? %>
+<div class="hero bg-gray">
+   <div class="hero-body">
+       <h1 class="text-uppercase text-center"><%= @theme.nom %></h1>
+   </div>
+</div>
+<h2 class="text-center"><%= @futur.titre %></h2>
+<p><%= @futur.description %></p>
+
+<a href="../../predictdeux/<%= params[:theme] %>/<%= $foo[$foo.length-2] %>" class="btn">Retour</a>
+
+<% else %>
+
+<p>Pour pouvoir lancer le jeu: </p>
+<%= link_to 'Se connecter', new_user_session_url, class: 'btn' %> - <%= link_to "S'inscrire", new_user_registration_url, class: 'btn' %> <br>
+
+<% end %>
+
+
+<%= link_to "Retour à l'écran d'accueil", root_url, class: 'btn btn-error' %>

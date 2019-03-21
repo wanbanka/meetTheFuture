@@ -4,27 +4,31 @@
        <h1 class="text-uppercase text-center"><%= @theme.nom %></h1>
    </div>
 </div>
-<h2 class="text-center"><%= @theme.futur.titre %></h2>
-<p><%= @theme.futur.description %></p>
+<h2 class="text-center"><%= @futur.titre %></h2>
+<p><%= @futur.description %></p>
+
+
 
 <% @collect_decisions.each do |decision| %>
 <section class="card">
-  <div class="card-header">
-      <h1><%= decision.titre %></h1>
-  </div>
+   <div class="card-header">
+       <h1><%= decision.titre %></h1>
+   </div>
    <div class="card-body">
        <p><%= decision.description %></p>
    </div>
    <div class="card-footer">
-       <%= link_to 'Voir le futur', controller: "main", action: "predictun", id: @tableau_textes[@index], theme: @theme.id %>
+       <%= link_to 'Voir le futur', controller: "main", action: "conclude", id: @tableau_textes[@index], theme: params[:theme] %>
    </div>
-    <% @index += 1 %>
 </section>
-<% end %>
-
-<% else %>
-<p>Pour pouvoir lancer le jeu: </p>
-<%= link_to 'Se connecter', new_user_session_url, class: 'btn' %> - <%= link_to "S'inscrire", new_user_registration_url, class: 'btn' %> <br>
+<% @index += 1 %>
 <% end %>
 <br>
-<%= link_to 'Retour', root_path, class: 'btn' %>
+<a href="../../predictun/<%= params[:theme] %>/<%= $foo[$foo.length-2] %>" class="btn">Retour</a>
+
+<% else %>
+
+<p>Pour pouvoir lancer le jeu: </p>
+<%= link_to 'Se connecter', new_user_session_url, class: 'btn' %> - <%= link_to "S'inscrire", new_user_registration_url, class: 'btn' %> <br>
+
+<% end %>

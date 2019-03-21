@@ -6,7 +6,8 @@ class ThemesController < ApplicationController
   # GET /themes
   # GET /themes.json
   def index
-    @themes = Theme.all
+    @themes = Theme.all.paginate(:page => params[:page], :per_page => 20)
+      @renderer = custom_paginate_renderer
   end
 
   # GET /themes/1
@@ -32,7 +33,7 @@ class ThemesController < ApplicationController
           flash[:success] = "Le thème a bien été crée."
          redirect_to @theme 
       else
-          flash[:error] = "Le thème n'a pas été crée, le nom du thème est requis, ainsi que la description et le texte de départ"
+          flash[:error] = "Le thème n'a pas été crée, le nom du thème est requis, ainsi que la description et le futur de départ"
           render :new
       end
   end
@@ -45,7 +46,7 @@ class ThemesController < ApplicationController
          flash[:success] = "Le thème a été mis à jour"
           redirect_to @theme
       else
-          flash[:error] = "Le thème n'a pas pu être mis à jour, le nom du thème est requis, ainsi que la descripion et le texte de départ"
+          flash[:error] = "Le thème n'a pas pu être mis à jour, le nom du thème est requis, ainsi que la descripion et le futur de départ"
           render :edit
       end
   end
@@ -66,6 +67,6 @@ class ThemesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def theme_params
-      params.require(:theme).permit(:nom, :description, :texte_depart)
+      params.require(:theme).permit(:nom, :description, :futur_id)
     end
 end
