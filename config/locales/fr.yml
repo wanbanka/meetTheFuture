@@ -1,5 +1,8 @@
 fr:
     hello: "Bonjour tout le monde"
+    will_paginate:
+        next_label: 'Suivant'
+        previous_label: 'Précédent'
     activerecord:
         errors:
             models:
@@ -7,23 +10,56 @@ fr:
                     attributes:
                         titre:
                             blank: 'Champ requis'
+                            too_short: 'Vous devez mettre au moins 5 caractères sur ce champ'
                         description:
                             blank: 'Champ requis'
+                            too_short: 'Vous devez mettre au moins 5 caractères sur ce champ'
                         theme:
                             required: 'Champ requis'
+                        futur_id:
+                            blank: 'Champ requis'
+                        futur:
+                            required: 'Le futur doit faire partie de la base de données'
                 theme:
                     attributes:
                         nom:
                             blank: 'Champ requis'
+                            too_short: 'Vous devez mettre au moins 5 caractères dans ce champ'
+                            taken: 'Vous avez déjà nommé un thème comme ceci'
                         description:
                             blank: 'Champ requis'
-                        texte_depart:
+                            too_short: 'Vous devez mettre au moins 5 caractères dans ce champ'
+                        futur_id:
                             blank: 'Champ requis'
+                        futur:
+                            required: 'Le futur doit faire partie de la base de données'
                 futur:
                     attributes:
                         titre:
                             blank: 'Champ requis'
+                            too_short: 'Vous devez mettre au moins 5 caractères dans ce champ'
+                            taken: 'Vous avez déjà nommé un futur comme ceci'
                         description:
                             blank: 'Champ requis'
-                        decision:
+                            too_short: 'Vous devez mettre au moins 5 caractères dans ce champ'
+                user:
+                    attributes:
+                        nom:
                             blank: 'Champ requis'
+                            too_short: 'Vous devez mettre au moins 2 caractères sur ce champ'
+                        prenom:
+                            blank: 'Champ requis'
+                            too_short: 'Vous devez mettre au moins 2 caractères sur ce champ'
+                        pseudo:
+                            blank: 'Champ requis'
+                            too_short: 'Vous devez mettre au moins 5 caractères sur ce champ'
+                            taken: 'Ce pseudo est déjà utilisé par un autre utilisateur, veuillez en prendre un autre.'
+                        email:
+                            blank: 'Champ requis'
+                            taken: 'Cet email est déjà utilisé par un autre utilisateur, veuillez en prendre un autre.'
+                            invalid: 'Vous devez rentrer une adresse mail, contenant un @.'
+                        password:
+                            blank: 'Champ requis'
+                            too_short: 'Vous devez mettre au moins 8 caractères sur ce champ'
+                        password_confirmation:
+                            confirmation: 'Veuillez taper le mot de passe de confirmation (qui doit être le même que le mot de passe tapé précedemment)'
